@@ -1,0 +1,43 @@
+{
+  "name": "cthulhu-web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.1.0",
+    "apollo-client": "^2.0.2",
+    "apollo-client-preset": "^1.0.2",
+    "apollo-link-context": "^1.0.0",
+    "apollo-link-http": "^1.1.0",
+    "graphql": "^0.11.7",
+    "graphql-tag": "^2.5.0",
+    "material-ui": "^1.0.0-beta.20",
+    "material-ui-icons": "^1.0.0-beta.17",
+    "moment": "^2.19.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-apollo": "^2.0.1",
+    "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "serve": "^6.4.1",
+    "typeface-roboto": "0.0.45"
+  },
+  "scripts": {
+    "now-start": "serve -s build",
+    "deploy": "now --public && now alias",
+    "start": "BROWSER=none react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "now": {
+    "name": "cthulhu-alpha",
+    "alias": "cthulhu"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "parser": "flow",
+    "semi": false
+  },
+  "devDependencies": {}
+}
