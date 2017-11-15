@@ -9,7 +9,9 @@ const httpLink = new HttpLink({ uri: `https://api.graph.cool/simple/v1/${project
 
 const middlewareLink = setContext(() => ({
   headers: {
-    authorization: `Bearer ${localStorage.getItem(GC_AUTH_TOKEN)}` || null
+    authorization: localStorage.getItem(GC_AUTH_TOKEN)
+      ? `Bearer ${localStorage.getItem(GC_AUTH_TOKEN)}`
+      : null
   }
 }))
 
