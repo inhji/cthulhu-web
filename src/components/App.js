@@ -23,8 +23,8 @@ class App extends Component {
           <PrivateRoute exact path="/profile" component={ProfileContainer} />
           <PrivateRoute exact path="/habits/:id" component={EditHabit} />
           <PrivateRoute exact path="/create" component={CreateHabit} />
+          <PrivateRoute exact path="/" component={HabitList} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={HabitList} />
           <Route exact path="/notify" component={Notify} />
         </Switch>
       </div>
