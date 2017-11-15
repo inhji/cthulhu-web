@@ -23,7 +23,7 @@ const AppDrawer = ({ classes, history, toggleDrawer, drawerOpen }) => (
     <div tabIndex={0} role="button" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
       <div className={classes.drawerHeader} />
       <List className={classes.list}>
-        <ListItem button onClick={() => history.push("/")}>
+        <ListItem button onClick={() => history.push("/habits")}>
           <ListItemIcon>
             <ListIcon />
           </ListItemIcon>

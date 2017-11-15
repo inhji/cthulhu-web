@@ -5,9 +5,10 @@ import { Switch, Route } from "react-router-dom"
 import HabitList from "./HabitList"
 import CreateHabit from "./CreateHabit"
 import EditHabit from "./EditHabit"
-import Login from "./Login"
+import LoginContainer from "./LoginContainer"
 import Notify from "./Notify"
 import ProfileContainer from "./ProfileContainer"
+import Home from "./Home"
 
 import Header from "./Header"
 import PrivateRoute from "./PrivateRoute"
@@ -20,12 +21,13 @@ class App extends Component {
         <Header />
 
         <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={LoginContainer} />
+          <Route exact path="/notify" component={Notify} />
           <PrivateRoute exact path="/profile" component={ProfileContainer} />
+          <PrivateRoute exact path="/habits" component={HabitList} />
           <PrivateRoute exact path="/habits/:id" component={EditHabit} />
           <PrivateRoute exact path="/create" component={CreateHabit} />
-          <PrivateRoute exact path="/" component={HabitList} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/notify" component={Notify} />
         </Switch>
       </div>
     )
