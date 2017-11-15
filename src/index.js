@@ -9,7 +9,6 @@ import client from "./apollo"
 import registerServiceWorker from "./registerServiceWorker"
 
 const theme = createMuiTheme()
-const root = document.getElementById("root")
 
 render(
   <BrowserRouter>
