@@ -22,6 +22,16 @@ class Login extends React.Component {
     email: ""
   }
 
+  handleLogin = () => {
+    const { email, password } = this.state
+    this.props.handleLogin({ email, password })
+  }
+
+  handleSignup = () => {
+    const { email, password, name } = this.state
+    this.props.handleSignup({ email, password, name })
+  }
+
   render() {
     const { classes } = this.props
 
@@ -58,25 +68,14 @@ class Login extends React.Component {
           margin="normal"
         />
 
-        {this.state.login ? (
-          <Button
-            raised
-            color="primary"
-            className={classes.button}
-            onClick={this.props.handleLogin}
-          >
-            Login
-          </Button>
-        ) : (
-          <Button
-            raised
-            color="primary"
-            className={classes.button}
-            onClick={this.props.handleSignup}
-          >
-            Create Account
-          </Button>
-        )}
+        <Button
+          raised
+          color="primary"
+          className={classes.button}
+          onClick={this.state.login ? this.handleLogin : this.handleSignup}
+        >
+          {this.state.login ? "Login" : "Create Account"}
+        </Button>
 
         <Button
           raised
