@@ -11,3 +11,8 @@ export const getUser = () => {
     authToken: window.localStorage.getItem(GC_AUTH_TOKEN)
   }
 }
+
+export const setUser = (id, token) => {
+  window.localStorage.setItem(GC_USER_ID, id)
+  window.localStorage.setItem(GC_AUTH_TOKEN, token)
+}
