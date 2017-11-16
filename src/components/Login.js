@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql, compose } from "react-apollo"
-import { GC_USER_ID, GC_AUTH_TOKEN } from "../constants"
 import { createUserMutation, signinUserMutation } from "../queries"
 import TextField from "material-ui/TextField"
 import Button from "material-ui/Button"
@@ -23,41 +22,14 @@ class Login extends React.Component {
     email: ""
   }
 
-  confirm = async () => {
-    const { email, password, name } = this.state
-
-    try {
-      if (this.state.login) {
-        const result = await this.props.signinUserMutation({
-          variables: {
-            email,
-            password
-          }
-        })
-        const id = result.data.authenticateUser.id
-        const token = result.data.authenticateUser.token
-        this.saveUserData(id, token)
-      } else {
-        const result = await this.props.createUserMutation({
-          variables: {
-            email,
-            password,
-            name
-          }
-        })
-        const id = result.data.signupUser.id
-        const token = result.data.signupUser.token
-        this.saveUserData(id, token)
-      }
-      this.props.history.push("/")
-    } catch (e) {
-      console.error(e)
-    }
+  handleLogin = () => {
+    const { email, password } = this.state
+    this.props.handleLogin({ email, password })
   }
 
-  saveUserData = (id, token) => {
-    localStorage.setItem(GC_USER_ID, id)
-    localStorage.setItem(GC_AUTH_TOKEN, token)
+  handleSignup = () => {
+    const { email, password, name } = this.state
+    this.props.handleSignup({ email, password, name })
   }
 
   render() {
@@ -96,7 +68,12 @@ class Login extends React.Component {
           margin="normal"
         />
 
-        <Button raised color="primary" className={classes.button} onClick={this.confirm}>
+        <Button
+          raised
+          color="primary"
+          className={classes.button}
+          onClick={this.state.login ? this.handleLogin : this.handleSignup}
+        >
           {this.state.login ? "Login" : "Create Account"}
         </Button>
 

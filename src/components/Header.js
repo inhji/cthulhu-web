@@ -45,14 +45,16 @@ class Header extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              className={classes.menuButton}
-              color="contrast"
-              aria-label="Menu"
-              onClick={() => this.toggleDrawer()}
-            >
-              <MenuIcon />
-            </IconButton>
+            {userId && (
+              <IconButton
+                className={classes.menuButton}
+                color="contrast"
+                aria-label="Menu"
+                onClick={() => this.toggleDrawer()}
+              >
+                <MenuIcon />
+              </IconButton>
+            )}
             <Typography
               type="title"
               color="inherit"
