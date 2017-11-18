@@ -1,10 +1,10 @@
-import React from "react"
-import { withStyles } from "material-ui/styles"
-import Typography from "material-ui/Typography"
+import React from 'react'
+import { withStyles } from 'material-ui/styles'
+import Typography from 'material-ui/Typography'
 
 const styles = theme => ({
   root: {
-    margin: "0 auto",
+    margin: '0 auto',
     maxWidth: 1024
   }
 })

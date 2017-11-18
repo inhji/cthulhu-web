@@ -1,16 +1,16 @@
-import React from "react"
-import { withStyles } from "material-ui/styles"
-import Typography from "material-ui/Typography"
+import React from 'react'
+import { withStyles } from 'material-ui/styles'
+import Typography from 'material-ui/Typography'
 
 const styles = theme => ({
   root: {
     padding: 20
   },
   title: {
-    textAlign: "center"
+    textAlign: 'center'
   },
   subtitle: {
-    textAlign: "center"
+    textAlign: 'center'
   }
 })
 
@@ -20,7 +20,8 @@ export default withStyles(styles)(({ classes }) => (
       Cthulhu
     </Typography>
     <Typography className={classes.subtitle} type="subheading">
-      A habit tracker that will drive you insane (just kidding, it's just a working title)
+      A habit tracker that will drive you insane (just kidding, it's just a
+      working title)
     </Typography>
     <Typography type="body2">Features:</Typography>
     <ul>
@@ -33,7 +34,9 @@ export default withStyles(styles)(({ classes }) => (
       </li>
 
       <li>
-        <Typography type="body2">Fine-grained Date and Time settings</Typography>
+        <Typography type="body2">
+          Fine-grained Date and Time settings
+        </Typography>
       </li>
     </ul>
   </div>

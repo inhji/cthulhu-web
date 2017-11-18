@@ -5,11 +5,12 @@
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.1",
     "apollo-client": "^2.0.3",
-    "apollo-client-preset": "^1.0.3",
+    "apollo-link": "^1.0.3",
     "apollo-link-context": "^1.0.1",
     "apollo-link-http": "^1.2.0",
     "graphql": "^0.11.7",
     "graphql-tag": "^2.5.0",
+    "lodash.countby": "^4.6.0",
     "material-ui": "^1.0.0-beta.20",
     "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.19.2",
@@ -37,7 +38,10 @@
   "prettier": {
     "printWidth": 100,
     "parser": "flow",
-    "semi": false
+    "semi": false,
+    "singleQuote": true
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "prettier": "^1.8.2"
+  }
 }

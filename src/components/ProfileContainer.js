@@ -1,7 +1,7 @@
-import React from "react"
-import Profile from "./Profile"
-import { graphql } from "react-apollo"
-import { currentUserQuery } from "../queries"
+import React from 'react'
+import Profile from './Profile'
+import { graphql } from 'react-apollo'
+import { currentUserQuery } from '../queries'
 
 class ProfileContainer extends React.Component {
   render() {
@@ -17,4 +17,6 @@ class ProfileContainer extends React.Component {
   }
 }
 
-export default graphql(currentUserQuery, { name: "currentUserQuery" })(ProfileContainer)
+export default graphql(currentUserQuery, { name: 'currentUserQuery' })(
+  ProfileContainer
+)

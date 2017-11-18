@@ -1,4 +1,4 @@
-import gql from "graphql-tag"
+import gql from 'graphql-tag'
 
 export const currentUserQuery = gql`
   query CurrentUserQuery {
@@ -16,6 +16,8 @@ export const allHabitsQuery = gql`
       id
       name
       days
+      isGood
+      threshold
       logs {
         id
         createdAt
@@ -30,6 +32,8 @@ export const habitQuery = gql`
       id
       name
       days
+      isGood
+      threshold
       author {
         id
         name
@@ -44,6 +48,8 @@ export const updateHabitMutation = gql`
       id
       name
       days
+      isGood
+      threshold
     }
   }
 `
@@ -62,6 +68,8 @@ export const createHabitMutation = gql`
       id
       name
       days
+      isGood
+      threshold
       author {
         id
         name

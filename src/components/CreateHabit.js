@@ -1,16 +1,16 @@
-import React from "react"
-import { graphql } from "react-apollo"
-import { GC_USER_ID } from "../constants"
-import { createHabitMutation, allHabitsQuery } from "../queries"
-import HabitForm from "./HabitForm"
+import React from 'react'
+import { graphql } from 'react-apollo'
+import { createHabitMutation, allHabitsQuery } from '../queries'
+import HabitForm from './HabitForm'
+import { getUser } from '../lib/user'
 
 class CreateHabit extends React.Component {
   createHabit = async ({ name, days }) => {
     try {
-      const authorId = localStorage.getItem(GC_USER_ID)
+      const { userId: authorId } = getUser()
 
       if (!authorId) {
-        console.error("No user logged in!")
+        console.error('No user logged in!')
         return
       }
 
@@ -26,7 +26,7 @@ class CreateHabit extends React.Component {
           }
         ]
       })
-      this.props.history.push("/")
+      this.props.history.push('/habits')
     } catch (err) {
       console.error(err)
     }
@@ -37,4 +37,6 @@ class CreateHabit extends React.Component {
   }
 }
 
-export default graphql(createHabitMutation, { name: "createHabitMutation" })(CreateHabit)
+export default graphql(createHabitMutation, { name: 'createHabitMutation' })(
+  CreateHabit
+)
