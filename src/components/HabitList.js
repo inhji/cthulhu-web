@@ -1,8 +1,7 @@
-import React from "react"
-import { graphql } from "react-apollo"
-import HabitContainer from "./HabitContainer"
-import { allHabitsQuery } from "../queries"
-import List from "material-ui/List"
+import React from 'react'
+import { graphql } from 'react-apollo'
+import HabitContainer from './HabitContainer'
+import { allHabitsQuery } from '../queries'
 
 class HabitList extends React.Component {
   render() {
@@ -14,8 +13,16 @@ class HabitList extends React.Component {
 
     const habits = allHabitsQuery.allHabits
 
-    return <List>{habits.map(habit => <HabitContainer key={habit.id} habit={habit} />)}</List>
+    console.log(this.props)
+
+    return (
+      <div>
+        {habits.map(habit => (
+          <HabitContainer key={habit.id} habit={habit} history={this.props.history} />
+        ))}
+      </div>
+    )
   }
 }
 
-export default graphql(allHabitsQuery, { name: "allHabitsQuery" })(HabitList)
+export default graphql(allHabitsQuery, { name: 'allHabitsQuery' })(HabitList)
