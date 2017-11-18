@@ -1,18 +1,18 @@
-import React, { Component } from "react"
-import { Switch, Route } from "react-router-dom"
+import React, { Component } from 'react'
+import { Switch, Route } from 'react-router-dom'
 
 // Routes
-import HabitList from "./HabitList"
-import CreateHabit from "./CreateHabit"
-import EditHabit from "./EditHabit"
-import LoginContainer from "./LoginContainer"
-import Notify from "./Notify"
-import ProfileContainer from "./ProfileContainer"
-import Home from "./Home"
+import HabitList from './HabitList'
+import CreateHabit from './CreateHabit'
+import EditHabit from './EditHabit'
+import LoginContainer from './LoginContainer'
+import Notify from './Notify'
+import ProfileContainer from './ProfileContainer'
+import Home from './Home'
 
-import Header from "./Header"
-import PrivateRoute from "./PrivateRoute"
-import "typeface-roboto"
+import Header from './Header'
+import PrivateRoute from './PrivateRoute'
+import 'typeface-roboto'
 
 class App extends Component {
   render() {

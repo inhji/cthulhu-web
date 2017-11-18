@@ -1,20 +1,20 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { toNumber, fromNumber } from "../lib/days_of_week"
-import TextField from "material-ui/TextField"
-import Button from "material-ui/Button"
-import { withStyles } from "material-ui/styles"
-import { FormGroup, FormControlLabel } from "material-ui/Form"
-import Checkbox from "material-ui/Checkbox"
+import React from 'react'
+import PropTypes from 'prop-types'
+import { toNumber, fromNumber } from '../lib/days_of_week'
+import TextField from 'material-ui/TextField'
+import Button from 'material-ui/Button'
+import { withStyles } from 'material-ui/styles'
+import { FormGroup, FormControlLabel } from 'material-ui/Form'
+import Checkbox from 'material-ui/Checkbox'
 
 const daysOfWeek = [
-  { id: "mon", text: "Montag" },
-  { id: "tue", text: "Dienstag" },
-  { id: "wed", text: "Mittwoch" },
-  { id: "thu", text: "Donnerstag" },
-  { id: "fri", text: "Freitag" },
-  { id: "sat", text: "Samstag" },
-  { id: "sun", text: "Sonntag" }
+  { id: 'mon', text: 'Montag' },
+  { id: 'tue', text: 'Dienstag' },
+  { id: 'wed', text: 'Mittwoch' },
+  { id: 'thu', text: 'Donnerstag' },
+  { id: 'fri', text: 'Freitag' },
+  { id: 'sat', text: 'Samstag' },
+  { id: 'sun', text: 'Sonntag' }
 ]
 
 const styles = theme => ({
@@ -89,11 +89,21 @@ class HabitForm extends React.Component {
           ))}
         </FormGroup>
 
-        <Button raised color="primary" className={classes.button} onClick={this.handleSubmit}>
+        <Button
+          raised
+          color="primary"
+          className={classes.button}
+          onClick={this.handleSubmit}
+        >
           Create Habit
         </Button>
 
-        <Button raised color="accent" className={classes.button} onClick={this.props.onSecondary}>
+        <Button
+          raised
+          color="accent"
+          className={classes.button}
+          onClick={this.props.onSecondary}
+        >
           Delete Habit
         </Button>
       </div>
@@ -112,7 +122,7 @@ HabitForm.propTypes = {
 
 HabitForm.defaultProps = {
   habit: {
-    name: "",
+    name: '',
     days: 0
   }
 }

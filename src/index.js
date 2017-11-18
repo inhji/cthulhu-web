@@ -1,12 +1,12 @@
-import React from "react"
-import { render } from "react-dom"
-import { BrowserRouter } from "react-router-dom"
-import { ApolloProvider } from "react-apollo"
-import { MuiThemeProvider, createMuiTheme } from "material-ui/styles"
+import React from 'react'
+import { render } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { ApolloProvider } from 'react-apollo'
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 
-import App from "./components/App"
-import client from "./apollo"
-import registerServiceWorker from "./registerServiceWorker"
+import App from './components/App'
+import client from './apollo'
+import registerServiceWorker from './registerServiceWorker'
 
 const theme = createMuiTheme()
 
@@ -18,7 +18,7 @@ render(
       </MuiThemeProvider>
     </ApolloProvider>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 )
 
 registerServiceWorker()

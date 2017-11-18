@@ -1,17 +1,21 @@
-import React from "react"
-import { graphql, compose } from "react-apollo"
-import { withRouter } from "react-router-dom"
-import { updateHabitMutation, deleteHabitMutation, habitQuery, allHabitsQuery } from "../queries"
-import HabitForm from "./HabitForm"
-import { GC_USER_ID } from "../constants"
+import React from 'react'
+import { graphql, compose } from 'react-apollo'
+import {
+  updateHabitMutation,
+  deleteHabitMutation,
+  habitQuery,
+  allHabitsQuery
+} from '../queries'
+import HabitForm from './HabitForm'
+import { getUser } from '../lib/user'
 
 class EditHabit extends React.Component {
   updateHabit = async ({ name, days }) => {
     try {
-      const authorId = localStorage.getItem(GC_USER_ID)
+      const { userId: authorId } = getUser()
 
       if (!authorId) {
-        console.error("No user logged in!")
+        console.error('No user logged in!')
         return
       }
 
@@ -22,7 +26,7 @@ class EditHabit extends React.Component {
           days
         }
       })
-      this.props.history.push("/")
+      this.props.history.push('/')
     } catch (err) {
       console.error(err)
     }
@@ -40,7 +44,7 @@ class EditHabit extends React.Component {
           }
         ]
       })
-      this.props.history.push("/")
+      this.props.history.push('/')
     } catch (e) {
       console.error(e)
     }
@@ -62,10 +66,10 @@ class EditHabit extends React.Component {
 }
 
 export default compose(
-  graphql(deleteHabitMutation, { name: "deleteHabitMutation" }),
-  graphql(updateHabitMutation, { name: "updateHabitMutation" }),
+  graphql(deleteHabitMutation, { name: 'deleteHabitMutation' }),
+  graphql(updateHabitMutation, { name: 'updateHabitMutation' }),
   graphql(habitQuery, {
-    name: "habitQuery",
+    name: 'habitQuery',
     options: ({ match }) => ({ variables: { id: match.params.id } })
   })
-)(withRouter(EditHabit))
+)(EditHabit)

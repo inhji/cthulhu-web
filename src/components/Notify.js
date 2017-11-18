@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 export default class Notify extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export default class Notify extends React.Component {
             Notification.requestPermission().then(function(result) {
               console.log(result)
               navigator.serviceWorker.ready.then(function(registration) {
-                registration.showNotification("Notification with ServiceWorker")
+                registration.showNotification('Notification with ServiceWorker')
               })
             })
           }}
