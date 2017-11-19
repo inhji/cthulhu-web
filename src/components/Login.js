@@ -23,12 +23,14 @@ class Login extends React.Component {
     email: ''
   }
 
-  handleLogin = () => {
+  handleLogin = e => {
+    e.preventDefault()
     const { email, password } = this.state
     this.props.handleLogin({ email, password })
   }
 
-  handleSignup = () => {
+  handleSignup = e => {
+    e.preventDefault()
     const { email, password, name } = this.state
     this.props.handleSignup({ email, password, name })
   }
@@ -37,7 +39,10 @@ class Login extends React.Component {
     const { classes } = this.props
 
     return (
-      <form className={classes.root}>
+      <form
+        className={classes.root}
+        onSubmit={this.state.login ? this.handleLogin : this.handleSignup}
+      >
         {!this.state.login && (
           <TextField
             fullWidth
@@ -69,17 +74,11 @@ class Login extends React.Component {
           margin="normal"
         />
 
-        <Button
-          raised
-          color="primary"
-          className={classes.button}
-          onClick={this.state.login ? this.handleLogin : this.handleSignup}
-        >
+        <Button type="submit" raised color="primary" className={classes.button}>
           {this.state.login ? 'Login' : 'Create Account'}
         </Button>
 
         <Button
-          raised
           className={classes.button}
           onClick={() => this.setState({ login: !this.state.login })}
         >
