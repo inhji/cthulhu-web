@@ -15,6 +15,7 @@ export const allHabitsQuery = gql`
     allHabits {
       id
       name
+      description
       days
       isGood
       threshold
@@ -31,6 +32,7 @@ export const habitQuery = gql`
     Habit(id: $id) {
       id
       name
+      description
       days
       isGood
       threshold
@@ -43,13 +45,32 @@ export const habitQuery = gql`
 `
 
 export const updateHabitMutation = gql`
-  mutation UpdateHabitMutation($id: ID!, $name: String!, $days: Int!) {
-    updateHabit(id: $id, name: $name, days: $days) {
+  mutation UpdateHabitMutation(
+    $id: ID!
+    $name: String!
+    $description: String
+    $isGood: Boolean!
+    $threshold: Int!
+    $days: Int!
+  ) {
+    updateHabit(
+      id: $id
+      name: $name
+      description: $description
+      isGood: $isGood
+      threshold: $threshold
+      days: $days
+    ) {
       id
       name
+      description
       days
       isGood
       threshold
+      author {
+        id
+        name
+      }
     }
   }
 `
@@ -63,10 +84,25 @@ export const deleteHabitMutation = gql`
 `
 
 export const createHabitMutation = gql`
-  mutation CreateHabitMutation($name: String!, $days: Int!, $authorId: ID!) {
-    createHabit(name: $name, days: $days, authorId: $authorId) {
+  mutation CreateHabitMutation(
+    $name: String!
+    $description: String
+    $isGood: Boolean!
+    $threshold: Int!
+    $days: Int!
+    $authorId: ID!
+  ) {
+    createHabit(
+      name: $name
+      description: $description
+      isGood: $isGood
+      threshold: $threshold
+      days: $days
+      authorId: $authorId
+    ) {
       id
       name
+      description
       days
       isGood
       threshold

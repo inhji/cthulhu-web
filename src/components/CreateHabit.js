@@ -5,7 +5,7 @@ import HabitForm from './HabitForm'
 import { getUser } from '../lib/user'
 
 class CreateHabit extends React.Component {
-  createHabit = async ({ name, days }) => {
+  createHabit = async ({ name, description, days, isGood, threshold }) => {
     try {
       const { userId: authorId } = getUser()
 
@@ -17,8 +17,11 @@ class CreateHabit extends React.Component {
       await this.props.createHabitMutation({
         variables: {
           name,
+          description,
           authorId,
-          days
+          days,
+          isGood,
+          threshold
         },
         refetchQueries: [
           {
@@ -37,6 +40,4 @@ class CreateHabit extends React.Component {
   }
 }
 
-export default graphql(createHabitMutation, { name: 'createHabitMutation' })(
-  CreateHabit
-)
+export default graphql(createHabitMutation, { name: 'createHabitMutation' })(CreateHabit)

@@ -1,16 +1,11 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
-import {
-  updateHabitMutation,
-  deleteHabitMutation,
-  habitQuery,
-  allHabitsQuery
-} from '../queries'
+import { updateHabitMutation, deleteHabitMutation, habitQuery, allHabitsQuery } from '../queries'
 import HabitForm from './HabitForm'
 import { getUser } from '../lib/user'
 
 class EditHabit extends React.Component {
-  updateHabit = async ({ name, days }) => {
+  updateHabit = async ({ name, description, isGood, threshold, days }) => {
     try {
       const { userId: authorId } = getUser()
 
@@ -23,10 +18,13 @@ class EditHabit extends React.Component {
         variables: {
           id: this.props.match.params.id,
           name,
+          description,
+          threshold,
+          isGood,
           days
         }
       })
-      this.props.history.push('/')
+      this.props.history.push('/habits')
     } catch (err) {
       console.error(err)
     }
@@ -44,7 +42,7 @@ class EditHabit extends React.Component {
           }
         ]
       })
-      this.props.history.push('/')
+      this.props.history.push('/habits')
     } catch (e) {
       console.error(e)
     }
