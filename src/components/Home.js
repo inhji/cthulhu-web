@@ -21,8 +21,10 @@ const styles = theme => ({
 export default withStyles(styles)(({ classes }) => (
   <div className={classes.root}>
     <div className={classes.header}>
-      <img alt="Cthulhu Logo" src={process.env.PUBLIC_URL + '/img/cthulhu.png'} />
-      <Typography className={classes.title} type="display1" />
+      <img alt="Cthulhu Logo" src={process.env.PUBLIC_URL + '/img/cthulhu.png'} width="150" />
+      <Typography className={classes.title} type="display1">
+        CTHULHU
+      </Typography>
       <Typography className={classes.subtitle} type="subheading">
         A habit tracker that will drive you i̩̱̦̹̠̅ͫ̔ͩ̊ͧn̸̟̲̻̖̙̬̏̏̏̾̈́̈́̈s̲̰ͭͮ͌̓̌ͥͣa̞͍̥̰̱̹̲̠̬̅̓ͬ͜͝n̛̝̯͔̫ͪ̃ͭͭ́̽͗ͩͤ͞e̷̷͙͇̲͈̎̊͛ͩ
       </Typography>
