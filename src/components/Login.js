@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql, compose } from 'react-apollo'
 import { createUserMutation, signinUserMutation } from '../queries'
 import TextField from 'material-ui/TextField'
+import Snackbar from 'material-ui/Snackbar'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
 
@@ -82,10 +83,18 @@ class Login extends React.Component {
           className={classes.button}
           onClick={() => this.setState({ login: !this.state.login })}
         >
-          {this.state.login
-            ? 'create new account?'
-            : 'already have an account?'}
+          {this.state.login ? 'create new account?' : 'already have an account?'}
         </Button>
+
+        <Snackbar
+          message={this.props.error || ''}
+          open={!!this.props.error}
+          autoHideDuration={1000}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+        />
       </form>
     )
   }

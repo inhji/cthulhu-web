@@ -5,8 +5,19 @@ import { setUser } from '../lib/user'
 import Login from './Login'
 
 class LoginContainer extends React.Component {
+  state = {
+    error: null
+  }
+
+  handleGraphQlErrors = errors => {
+    const err = errors[0]
+
+    this.setState({ error: err.functionError })
+  }
+
   handleLogin = async ({ email, password }) => {
     try {
+      this.setState({ error: null })
       const result = await this.props.signinUserMutation({
         variables: {
           email,
@@ -18,26 +29,45 @@ class LoginContainer extends React.Component {
       setUser(id, token)
       this.props.history.push('/habits')
     } catch (e) {
-      console.log(e)
+      if (e.graphQLErrors.length) {
+        this.handleGraphQlErrors(e.graphQLErrors)
+      } else {
+        console.log(e)
+      }
     }
   }
 
   handleSignup = async ({ name, email, password }) => {
-    const result = await this.props.createUserMutation({
-      variables: {
-        email,
-        password,
-        name
+    try {
+      this.setState({ error: null })
+      const result = await this.props.createUserMutation({
+        variables: {
+          email,
+          password,
+          name
+        }
+      })
+      const id = result.data.signupUser.id
+      const token = result.data.signupUser.token
+      setUser(id, token)
+    } catch (e) {
+      if (e.graphQLErrors.length) {
+        this.handleGraphQlErrors(e.graphQLErrors)
+      } else {
+        console.log(e)
       }
-    })
-    const id = result.data.signupUser.id
-    const token = result.data.signupUser.token
-    setUser(id, token)
+    }
   }
 
   render() {
     return (
-      <Login handleLogin={this.handleLogin} handleSignup={this.handleSignup} />
+      <div>
+        <Login
+          handleLogin={this.handleLogin}
+          handleSignup={this.handleSignup}
+          error={this.state.error}
+        />
+      </div>
     )
   }
 }
