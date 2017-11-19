@@ -3,6 +3,7 @@ import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
 import weeklyLogs from '../lib/weekly_logs'
 import { red, green } from 'material-ui/colors'
+import moment from 'moment'
 
 const styles = theme => ({
   days: {
@@ -18,9 +19,17 @@ const styles = theme => ({
     extend: 'day',
     background: green[400]
   },
+  dayGoodCurrent: {
+    extend: 'day',
+    background: green[500]
+  },
   dayBad: {
     extend: 'day',
     background: red[400]
+  },
+  dayBadCurrent: {
+    extend: 'day',
+    background: red[500]
   },
   dayNone: {
     extend: 'day',
@@ -29,8 +38,12 @@ const styles = theme => ({
 })
 
 class WeeklyMap extends React.Component {
-  dayClass(value) {
+  dayClass(value, weekday) {
     const { classes, threshold, isGood } = this.props
+    const currentWeekday = moment().weekday()
+    const isCurrentDay = currentWeekday === weekday
+    const goodDay = isCurrentDay ? classes.dayGoodCurrent : classes.dayGood
+    const badDay = isCurrentDay ? classes.dayBadCurrent : classes.dayBad
 
     if (value === -1) {
       return classes.dayNone
@@ -38,15 +51,15 @@ class WeeklyMap extends React.Component {
 
     if (isGood) {
       if (value >= threshold) {
-        return classes.dayGood
+        return goodDay
       } else {
-        return classes.dayBad
+        return badDay
       }
     } else {
       if (value > threshold) {
-        return classes.dayBad
+        return badDay
       } else {
-        return classes.dayGood
+        return goodDay
       }
     }
   }
@@ -57,7 +70,7 @@ class WeeklyMap extends React.Component {
     return (
       <div className={classes.days}>
         {weeklyLogs(logs).map((day, index) => (
-          <div key={day.name} className={this.dayClass(day.value)}>
+          <div key={day.name} className={this.dayClass(day.value, index)}>
             <Typography type="body1" className={classes.day}>
               {day.text}
             </Typography>
