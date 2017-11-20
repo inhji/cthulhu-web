@@ -7,12 +7,10 @@ import moment from 'moment'
 
 const styles = theme => ({
   days: {
-    display: 'flex',
-    paddingTop: theme.spacing.unit
+    display: 'flex'
   },
   day: {
     flex: '1 0',
-    padding: 2,
     textAlign: 'center'
   },
   dayGood: {
@@ -33,7 +31,7 @@ const styles = theme => ({
   },
   dayNone: {
     extend: 'day',
-    background: 'white'
+    background: theme.palette.background.default
   }
 })
 
