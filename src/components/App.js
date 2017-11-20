@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { withStyles } from 'material-ui/styles'
 
 // Routes
 import HabitList from './HabitList'
@@ -14,10 +15,16 @@ import Header from './Header'
 import PrivateRoute from './PrivateRoute'
 import 'typeface-roboto'
 
+const styles = theme => ({
+  root: {
+    background: theme.palette.background.contentFrame
+  }
+})
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className={this.props.classes.root}>
         <Header />
 
         <Switch>
@@ -34,4 +41,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withStyles(styles)(App)
