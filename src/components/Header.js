@@ -8,6 +8,8 @@ import Typography from 'material-ui/Typography'
 import Button from 'material-ui/Button'
 import IconButton from 'material-ui/IconButton'
 import MenuIcon from 'material-ui-icons/Menu'
+import AccountCircle from 'material-ui-icons/AccountCircle'
+import Menu, { MenuItem } from 'material-ui/Menu'
 
 import Drawer from './Drawer'
 import { getUser } from '../lib/user'
@@ -28,13 +30,24 @@ const styles = theme => ({
 
 class Header extends React.Component {
   state = {
-    drawerOpen: false
+    drawerOpen: false,
+    menuOpen: false
   }
 
   toggleDrawer = () => {
     this.setState({
       drawerOpen: !this.state.drawerOpen
     })
+  }
+
+  closeMenu = () => {
+    this.setState({
+      menuOpen: false
+    })
+  }
+
+  toggleMenu = () => {
+    this.setState({ menuOpen: !this.state.menuOpen })
   }
 
   render() {
@@ -64,19 +77,34 @@ class Header extends React.Component {
               Cthulhu
             </Typography>
             {userId ? (
-              <Button color="contrast" onClick={() => history.push('/profile')}>
-                Profile
-              </Button>
+              <div>
+                <IconButton onClick={this.toggleMenu} color="contrast">
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={this.state.menuOpen}
+                  onRequestClose={this.toggleMenu}
+                >
+                  <MenuItem onClick={this.toggleMenu}>Profile</MenuItem>
+                  <MenuItem onClick={this.toggleMenu}>My account</MenuItem>
+                </Menu>
+              </div>
             ) : (
               <Button color="contrast" onClick={() => history.push('/login')}>
                 Login
               </Button>
             )}
           </Toolbar>
-          <Drawer
-            toggleDrawer={this.toggleDrawer}
-            drawerOpen={this.state.drawerOpen}
-          />
+          <Drawer toggleDrawer={this.toggleDrawer} drawerOpen={this.state.drawerOpen} />
         </AppBar>
       </div>
     )
