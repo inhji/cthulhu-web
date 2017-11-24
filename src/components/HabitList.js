@@ -5,7 +5,6 @@ import { withStyles } from 'material-ui/styles'
 import { allHabitsQuery } from '../queries'
 
 const styles = theme => {
-  console.log(theme)
   return {
     root: {
       padding: theme.spacing.unit * 2
@@ -22,8 +21,6 @@ class HabitList extends React.Component {
     }
 
     const habits = allHabitsQuery.allHabits
-
-    console.log(this.props)
 
     return (
       <div className={classes.root}>

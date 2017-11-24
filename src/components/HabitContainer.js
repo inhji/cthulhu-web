@@ -26,8 +26,6 @@ class HabitContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props)
-
     return (
       <Habit habit={this.props.habit} addHabitLog={this.addHabitLog} editHabit={this.editHabit} />
     )
