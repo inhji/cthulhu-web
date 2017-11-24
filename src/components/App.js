@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
-import { withStyles } from 'material-ui/styles'
+import { withStyles, MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import { red, green } from 'material-ui/colors'
 
 // Routes
 import HabitList from './HabitList'
@@ -15,6 +16,12 @@ import Header from './Header'
 import PrivateRoute from './PrivateRoute'
 import 'typeface-roboto'
 
+const theme = createMuiTheme({
+  palette: {
+    primary: green
+  }
+})
+
 const styles = theme => ({
   root: {
     background: theme.palette.background.contentFrame
@@ -24,19 +31,21 @@ const styles = theme => ({
 class App extends Component {
   render() {
     return (
-      <div className={this.props.classes.root}>
-        <Header />
+      <MuiThemeProvider theme={theme}>
+        <div className={this.props.classes.root}>
+          <Header />
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={LoginContainer} />
-          <Route exact path="/notify" component={Notify} />
-          <PrivateRoute exact path="/profile" component={ProfileContainer} />
-          <PrivateRoute exact path="/habits" component={HabitList} />
-          <PrivateRoute exact path="/habits/:id" component={EditHabit} />
-          <PrivateRoute exact path="/create" component={CreateHabit} />
-        </Switch>
-      </div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={LoginContainer} />
+            <Route exact path="/notify" component={Notify} />
+            <PrivateRoute exact path="/profile" component={ProfileContainer} />
+            <PrivateRoute exact path="/habits" component={HabitList} />
+            <PrivateRoute exact path="/habits/:id" component={EditHabit} />
+            <PrivateRoute exact path="/create" component={CreateHabit} />
+          </Switch>
+        </div>
+      </MuiThemeProvider>
     )
   }
 }
