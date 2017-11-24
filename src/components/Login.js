@@ -5,10 +5,11 @@ import TextField from 'material-ui/TextField'
 import Snackbar from 'material-ui/Snackbar'
 import Button from 'material-ui/Button'
 import { withStyles } from 'material-ui/styles'
+import Card, { CardContent } from 'material-ui/Card'
 
 const styles = theme => ({
   root: {
-    margin: theme.spacing.unit
+    margin: theme.spacing.unit * 2
   },
   button: {
     margin: theme.spacing.unit
@@ -39,62 +40,63 @@ class Login extends React.Component {
     const { classes } = this.props
 
     return (
-      <form
-        className={classes.root}
-        onSubmit={this.state.login ? this.handleLogin : this.handleSignup}
-      >
-        {!this.state.login && (
-          <TextField
-            fullWidth
-            required
-            label="Username"
-            value={this.state.name}
-            onChange={e => this.setState({ name: e.target.value })}
-            margin="normal"
-          />
-        )}
+      <Card className={classes.root}>
+        <CardContent>
+          <form onSubmit={this.state.login ? this.handleLogin : this.handleSignup}>
+            {!this.state.login && (
+              <TextField
+                fullWidth
+                required
+                label="Username"
+                value={this.state.name}
+                onChange={e => this.setState({ name: e.target.value })}
+                margin="normal"
+              />
+            )}
 
-        <TextField
-          fullWidth
-          required
-          label="Email"
-          type="email"
-          value={this.state.email}
-          onChange={e => this.setState({ email: e.target.value })}
-          margin="normal"
-        />
+            <TextField
+              fullWidth
+              required
+              label="Email"
+              type="email"
+              value={this.state.email}
+              onChange={e => this.setState({ email: e.target.value })}
+              margin="normal"
+            />
 
-        <TextField
-          fullWidth
-          required
-          label="Password"
-          type="password"
-          value={this.state.password}
-          onChange={e => this.setState({ password: e.target.value })}
-          margin="normal"
-        />
+            <TextField
+              fullWidth
+              required
+              label="Password"
+              type="password"
+              value={this.state.password}
+              onChange={e => this.setState({ password: e.target.value })}
+              margin="normal"
+            />
 
-        <Button type="submit" raised color="primary" className={classes.button}>
-          {this.state.login ? 'Login' : 'Create Account'}
-        </Button>
+            <Button type="submit" raised color="primary" className={classes.button}>
+              {this.state.login ? 'Login' : 'Create Account'}
+            </Button>
 
-        <Button
-          className={classes.button}
-          onClick={() => this.setState({ login: !this.state.login })}
-        >
-          {this.state.login ? 'create new account?' : 'already have an account?'}
-        </Button>
+            <Button
+              className={classes.button}
+              onClick={() => this.setState({ login: !this.state.login })}
+            >
+              {this.state.login ? 'create new account?' : 'already have an account?'}
+            </Button>
 
-        <Snackbar
-          message={this.props.error || ''}
-          open={!!this.props.error}
-          autoHideDuration={1000}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left'
-          }}
-        />
-      </form>
+            <Snackbar
+              message={this.props.error || ''}
+              open={!!this.props.error}
+              autoHideDuration={1000}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left'
+              }}
+            />
+          </form>
+        </CardContent>
+      </Card>
     )
   }
 }
