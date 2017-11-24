@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { withStyles, MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
-import { red, green } from 'material-ui/colors'
+import { green } from 'material-ui/colors'
 
 // Routes
 import HabitList from './HabitList'
