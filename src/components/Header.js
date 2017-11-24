@@ -31,28 +31,20 @@ const styles = theme => ({
 class Header extends React.Component {
   state = {
     drawerOpen: false,
-    menuOpen: false
+    menuAnchor: null
   }
 
-  toggleDrawer = () => {
-    this.setState({
-      drawerOpen: !this.state.drawerOpen
-    })
-  }
+  toggleDrawer = () => this.setState({ drawerOpen: !this.state.drawerOpen })
 
-  closeMenu = () => {
-    this.setState({
-      menuOpen: false
-    })
-  }
+  handleMenu = e => this.setState({ menuAnchor: e.currentTarget })
 
-  toggleMenu = () => {
-    this.setState({ menuOpen: !this.state.menuOpen })
-  }
+  closeMenu = () => this.setState({ menuAnchor: null })
 
   render() {
     const { userId } = getUser()
     const { classes, history } = this.props
+    const { menuAnchor } = this.state
+    const open = Boolean(menuAnchor)
 
     return (
       <div className={classes.root}>
@@ -63,7 +55,7 @@ class Header extends React.Component {
                 className={classes.menuButton}
                 color="contrast"
                 aria-label="Menu"
-                onClick={() => this.toggleDrawer()}
+                onClick={this.toggleDrawer}
               >
                 <MenuIcon />
               </IconButton>
@@ -78,11 +70,12 @@ class Header extends React.Component {
             </Typography>
             {userId ? (
               <div>
-                <IconButton onClick={this.toggleMenu} color="contrast">
+                <IconButton onClick={this.handleMenu} color="contrast">
                   <AccountCircle />
                 </IconButton>
                 <Menu
                   id="menu-appbar"
+                  anchorEl={menuAnchor}
                   anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'right'
@@ -91,11 +84,17 @@ class Header extends React.Component {
                     vertical: 'top',
                     horizontal: 'right'
                   }}
-                  open={this.state.menuOpen}
-                  onRequestClose={this.toggleMenu}
+                  open={open}
+                  onRequestClose={this.closeMenu}
                 >
-                  <MenuItem onClick={this.toggleMenu}>Profile</MenuItem>
-                  <MenuItem onClick={this.toggleMenu}>My account</MenuItem>
+                  <MenuItem
+                    onClick={() => {
+                      history.push('/profile')
+                      this.closeMenu()
+                    }}
+                  >
+                    Profile
+                  </MenuItem>
                 </Menu>
               </div>
             ) : (
