@@ -11,7 +11,7 @@ const weeklyLogs = logs => {
   const week = moment().week()
   const weekday = moment().weekday()
   const weekdayNames = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
-  const weekdayTexts = ['M', 'D', 'M', 'D', 'F', 'S', 'S']
+  const weekdayTexts = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
   const filteredLogs = logs.filter(log => moment(log.createdAt).week() === week)
   const values = countBy(filteredLogs, log => weekdayNames[moment(log.createdAt).weekday()])
 
