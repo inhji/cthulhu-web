@@ -11,23 +11,28 @@ const styles = theme => ({
   },
   day: {
     flex: '1 0',
-    textAlign: 'center'
+    textAlign: 'center',
+    padding: 3
   },
   dayGood: {
     extend: 'day',
     background: green[400]
   },
-  dayGoodCurrent: {
-    extend: 'day',
-    background: green[500]
-  },
   dayBad: {
     extend: 'day',
     background: red[400]
   },
+  dayGoodCurrent: {
+    extend: 'dayGood',
+    padding: 0,
+    background: green[500],
+    border: `3px ${green[900]} solid`
+  },
   dayBadCurrent: {
-    extend: 'day',
-    background: red[500]
+    extend: 'dayBad',
+    padding: 0,
+    background: red[500],
+    border: `3px ${red[900]} solid`
   },
   dayNone: {
     extend: 'day',
