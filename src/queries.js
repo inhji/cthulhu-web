@@ -12,17 +12,14 @@ export const currentUserQuery = gql`
 
 export const allHabitsQuery = gql`
   query AllHabitsQuery {
-    allHabits {
+    habits {
       id
       name
       description
       days
       isGood
       threshold
-      logs {
-        id
-        createdAt
-      }
+      logs
     }
   }
 `
@@ -36,6 +33,7 @@ export const habitQuery = gql`
       days
       isGood
       threshold
+      logs
       author {
         id
         name
@@ -128,13 +126,9 @@ export const createHabitLogMutation = gql`
 
 export const createUserMutation = gql`
   mutation CreateUserMutation($email: String!, $password: String!, $name: String!) {
-    signupUser(email: $email, password: $password, name: $name) {
+    registerUser(email: $email, password: $password, name: $name) {
       id
       token
-    }
-    authenticateUser(email: $email, password: $password) {
-      token
-      id
     }
   }
 `

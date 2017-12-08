@@ -47,8 +47,8 @@ class LoginContainer extends React.Component {
           name
         }
       })
-      const id = result.data.signupUser.id
-      const token = result.data.signupUser.token
+      const id = result.data.registerUser.id
+      const token = result.data.registerUser.token
       setUser(id, token)
     } catch (e) {
       if (e.graphQLErrors.length) {

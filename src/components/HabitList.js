@@ -20,7 +20,7 @@ class HabitList extends React.Component {
       return <div>loading..</div>
     }
 
-    const habits = allHabitsQuery.allHabits
+    const habits = allHabitsQuery.habits
 
     return (
       <div className={classes.root}>

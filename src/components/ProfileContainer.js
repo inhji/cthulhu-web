@@ -11,12 +11,12 @@ class ProfileContainer extends React.Component {
       return <div>loading..</div>
     }
 
-    const user = currentUserQuery.user
+    if (currentUserQuery && currentUserQuery.error) {
+      return console.log(currentUserQuery.error)
+    }
 
-    return <Profile user={user} />
+    return <Profile user={currentUserQuery.user} />
   }
 }
 
-export default graphql(currentUserQuery, { name: 'currentUserQuery' })(
-  ProfileContainer
-)
+export default graphql(currentUserQuery, { name: 'currentUserQuery' })(ProfileContainer)
