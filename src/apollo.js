@@ -5,15 +5,15 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import { GC_AUTH_TOKEN } from './constants'
 
 const httpLink = new HttpLink({ uri: process.env.REACT_APP_GRAPHCOOL_ENDPOINT })
-const authLink = setContext((req, { headers }) => {
+const authLink = setContext((req, ctx) => {
+  const headers = ctx.headers || {}
   const token = localStorage.getItem(GC_AUTH_TOKEN)
 
-  return {
-    ...headers,
-    headers: {
-      authorization: token ? `Bearer ${token}` : null
-    }
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
   }
+
+  return headers
 })
 
 const link = authLink.concat(httpLink)
