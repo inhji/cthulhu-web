@@ -7,9 +7,9 @@ import { getUser } from '../lib/user'
 class CreateHabit extends React.Component {
   createHabit = async ({ name, description, days, isGood, threshold }) => {
     try {
-      const { userId: authorId } = getUser()
+      const { userId: author } = getUser()
 
-      if (!authorId) {
+      if (!author) {
         console.error('No user logged in!')
         return
       }
@@ -18,7 +18,7 @@ class CreateHabit extends React.Component {
         variables: {
           name,
           description,
-          authorId,
+          author,
           days,
           isGood,
           threshold

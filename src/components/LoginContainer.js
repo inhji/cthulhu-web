@@ -9,10 +9,13 @@ class LoginContainer extends React.Component {
     error: null
   }
 
-  handleGraphQlErrors = errors => {
-    const err = errors[0]
-
-    this.setState({ error: err.functionError })
+  handleErrors = e => {
+    if (e.graphQLErrors.length) {
+      const error = e.graphQLErrors[0]
+      this.setState({ error: error.message })
+    } else {
+      console.error(e)
+    }
   }
 
   handleLogin = async ({ email, password }) => {
@@ -29,11 +32,7 @@ class LoginContainer extends React.Component {
       setUser(id, token)
       this.props.history.push('/habits')
     } catch (e) {
-      if (e.graphQLErrors.length) {
-        this.handleGraphQlErrors(e.graphQLErrors)
-      } else {
-        console.log(e)
-      }
+      this.handleErrors(e)
     }
   }
 
@@ -51,11 +50,7 @@ class LoginContainer extends React.Component {
       const token = result.data.registerUser.token
       setUser(id, token)
     } catch (e) {
-      if (e.graphQLErrors.length) {
-        this.handleGraphQlErrors(e.graphQLErrors)
-      } else {
-        console.log(e)
-      }
+      this.handleErrors(e)
     }
   }
 

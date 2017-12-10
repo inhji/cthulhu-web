@@ -8,7 +8,7 @@ class HabitContainer extends React.Component {
     try {
       await this.props.createHabitLogMutation({
         variables: {
-          habitId: this.props.habit.id
+          id: this.props.habit.id
         },
         refetchQueries: [
           {
