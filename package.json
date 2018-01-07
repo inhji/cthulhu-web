@@ -22,7 +22,7 @@
     "typeface-roboto": "0.0.45"
   },
   "scripts": {
-    "now-start": "serve -s build",
+    "serve": "serve -s build -p 3000",
     "start-local":
       "REACT_APP_GRAPHCOOL_ENDPOINT=http://localhost:3001/graphql BROWSER=none react-scripts start",
     "start": "BROWSER=none react-scripts start",
