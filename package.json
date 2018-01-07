@@ -18,7 +18,7 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
-    "serve": "^6.4.1",
+    "serve": "^6.4.4",
     "typeface-roboto": "0.0.45"
   },
   "scripts": {
