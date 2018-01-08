@@ -12,8 +12,8 @@ const weeklyLogs = logs => {
   const weekday = moment().weekday()
   const weekdayNames = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
   const weekdayTexts = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
-  const filteredLogs = logs.filter(log => moment(log.createdAt).week() === week)
-  const values = countBy(filteredLogs, log => weekdayNames[moment(log.createdAt).weekday()])
+  const filteredLogs = logs.filter(log => moment(log).week() === week)
+  const values = countBy(filteredLogs, log => weekdayNames[moment(log).weekday()])
 
   return weekdayNames.map((n, index) => {
     const value = index > weekday ? -1 : values[n] || 0
