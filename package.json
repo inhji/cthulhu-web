@@ -9,7 +9,7 @@
     "graphql": "^0.11.7",
     "graphql-tag": "^2.6.0",
     "lodash.countby": "^4.6.0",
-    "material-ui": "^1.0.0-beta.20",
+    "material-ui": "^1.0.0-beta.27",
     "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.19.3",
     "prop-types": "^15.6.0",
