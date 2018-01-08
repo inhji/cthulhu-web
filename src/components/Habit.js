@@ -20,7 +20,8 @@ const styles = theme => ({
   },
   icon: {
     width: 30,
-    height: 30
+    height: 30,
+    marginLeft: 1
   },
   content: { padding: 0 },
   flexGrow: {
@@ -44,7 +45,7 @@ const Habit = ({ habit, weeklyLogs, addHabitLog, editHabit, classes }) => (
         </Avatar>
       }
       title={habit.name}
-      subheader={habit.description}
+      subheader={habit.description || 'A fine habit'}
     />
     <CardContent className={classes.content}>
       <WeeklyMap logs={habit.logs} threshold={habit.threshold} isGood={habit.isGood} />

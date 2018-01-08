@@ -103,7 +103,6 @@ class HabitForm extends React.Component {
               <Switch
                 checked={this.state.isGood}
                 onChange={(e, checked) => {
-                  console.log(e.target.value, checked)
                   this.setState({ isGood: checked })
                 }}
               />

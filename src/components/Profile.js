@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography'
 const styles = theme => ({
   root: {
     margin: '0 auto',
-    maxWidth: 1024
+    maxWidth: theme.breakpoints.values.md
   }
 })
 

@@ -3,6 +3,14 @@ import { graphql, compose } from 'react-apollo'
 import { updateHabitMutation, deleteHabitMutation, habitQuery, allHabitsQuery } from '../queries'
 import HabitForm from './HabitForm'
 import { getUser } from '../lib/user'
+import { withStyles } from 'material-ui/styles'
+
+const styles = theme => ({
+  root: {
+    margin: '0 auto',
+    maxWidth: theme.breakpoints.values.md
+  }
+})
 
 class EditHabit extends React.Component {
   updateHabit = async ({ name, description, isGood, threshold, days }) => {
@@ -49,16 +57,24 @@ class EditHabit extends React.Component {
   }
 
   render() {
-    if (this.props.habitQuery.loading) {
+    const { habitQuery, classes } = this.props
+
+    if (habitQuery.loading) {
       return <div>loading...</div>
     }
 
+    if (habitQuery.error) {
+      return console.log(habitQuery.error)
+    }
+
     return (
-      <HabitForm
-        onSubmit={this.updateHabit}
-        onSecondary={this.deleteHabit}
-        habit={this.props.habitQuery.Habit}
-      />
+      <div className={classes.root}>
+        <HabitForm
+          onSubmit={this.updateHabit}
+          onSecondary={this.deleteHabit}
+          habit={habitQuery.habit}
+        />
+      </div>
     )
   }
 }
@@ -70,4 +86,4 @@ export default compose(
     name: 'habitQuery',
     options: ({ match }) => ({ variables: { id: match.params.id } })
   })
-)(EditHabit)
+)(withStyles(styles)(EditHabit))
