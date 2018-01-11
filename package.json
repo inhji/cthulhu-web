@@ -42,6 +42,6 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "prettier": "^1.9.1"
+    "prettier": "^1.10.2"
   }
 }
