@@ -1,0 +1,6 @@
+{
+  "name": "HabitChart",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./HabitChart.js"
+}

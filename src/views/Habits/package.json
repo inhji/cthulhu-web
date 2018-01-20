@@ -1,0 +1,6 @@
+{
+  "name": "Habits",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Habits.js"
+}

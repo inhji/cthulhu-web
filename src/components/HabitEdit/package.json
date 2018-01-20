@@ -1,0 +1,6 @@
+{
+  "name": "HabitEdit",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./HabitEdit.js"
+}

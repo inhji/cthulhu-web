@@ -1,0 +1,18 @@
+// core overrides
+
+$border-color: $gray-200;
+
+// Navbar
+
+$navbar-brand-width: 200px;
+$navbar-brand-bg: darken($gray-800, 10%);
+$navbar-brand-logo: url('../img/cthulhu.png');
+$navbar-brand-minimized-logo: url('../img/cthulhu.png');
+$navbar-brand-logo-size: 40px auto;
+$navbar-brand-minimized-logo-size: 40px;
+$navbar-brand-border: (bottom: (size: 1px, style: solid, color: darken($gray-800, 10%)));
+
+// Sidebar
+
+$sidebar-width: 200px;
+$mobile-sidebar-width: $sidebar-width;

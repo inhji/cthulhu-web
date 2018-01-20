@@ -1,4 +1,4 @@
-import { GC_USER_ID, GC_AUTH_TOKEN } from '../constants'
+import { GC_USER_ID, GC_AUTH_TOKEN } from './constants'
 
 export const logout = () => {
   window.localStorage.removeItem(GC_USER_ID)
