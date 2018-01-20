@@ -65,16 +65,20 @@
     "react-transition-group": "2.2.1",
     "reactstrap": "5.0.0-alpha.4",
     "simple-line-icons": "^2.4.1",
-    "spinkit": "1.2.5"
+    "spinkit": "1.2.5",
+    "snyk": "^1.69.1"
   },
   "scripts": {
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
     "start": "webpack-dev-server --progress --colors --inline --env.dev",
     "build": "webpack -p --progress --env.prod",
-    "clean": "rimraf ./build"
+    "clean": "rimraf ./build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "engines": {
     "node": ">= 6.4.0",
     "npm": ">= 5.0.0"
-  }
+  },
+  "snyk": true
 }
