@@ -39,7 +39,7 @@
     "babel-runtime": "^6.26.0",
     "bootstrap": "4.0.0-beta.2",
     "chart.js": "2.7.1",
-    "codemirror": "5.32.0",
+    "codemirror": "5.33.0",
     "font-awesome": "^4.7.0",
     "graphql": "^0.12.3",
     "graphql-tag": "^2.6.1",
