@@ -78,7 +78,7 @@
   "scripts": {
     "dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
     "start": "webpack-dev-server --progress --colors --inline --env.dev",
-    "build": "webpack -p --progress --env.prod",
+    "build": "webpack -p --env.prod",
     "clean": "rimraf ./build",
     "frags": "node frags"
   },
