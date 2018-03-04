@@ -1,12 +1,13 @@
 import React from 'react'
 import { graphql } from 'react-apollo'
 import { allPostsQuery } from '../../lib/queries'
-import { Link, Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import PostList from '../../components/PostList/'
+import PostEdit from '../../components/PostEdit'
 
-class Habits extends React.Component {
-  render() {
-    const { allPostsQuery, classes } = this.props
+class Posts extends React.Component {
+  render () {
+    const { allPostsQuery } = this.props
 
     if (allPostsQuery && allPostsQuery.loading) {
       return <div>loading..</div>
@@ -19,6 +20,16 @@ class Habits extends React.Component {
     return (
       <div className="animated fadeIn">
         <Switch>
+          <Route
+            exact
+            path="/posts/edit/:id"
+            name="EditPost"
+            render={({ match }) => {
+              const post = posts.find(post => post.id === match.params.id)
+
+              return <PostEdit post={post} />
+            }}
+          />
           <Route path="/posts" name="PostList" render={() => <PostList posts={posts} />} />
         </Switch>
       </div>
@@ -26,4 +37,4 @@ class Habits extends React.Component {
   }
 }
 
-export default graphql(allPostsQuery, { name: 'allPostsQuery' })(Habits)
+export default graphql(allPostsQuery, { name: 'allPostsQuery' })(Posts)

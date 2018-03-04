@@ -1,28 +1,36 @@
 import React from 'react'
-import { Card, CardBody, CardTitle, Button, Table, Col, Row } from 'reactstrap'
-import { Link, withRouter } from 'react-router-dom'
+import { Card, CardBody, Button, Col, Row } from 'reactstrap'
+import { withRouter } from 'react-router-dom'
 
-class Note extends React.Component {
-  render() {
-    const { content } = this.props.note
-
-    return (
-      <Row>
-        <Col lg={6}>
-          <Card>
-            <CardBody>
-              <p dangerouslySetInnerHTML={{ __html: content }}></p>
-              <Button>Edit</Button>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    )
-  }
-}
+const Note = withRouter(({ note, history }) => (
+  <Row>
+    <Col lg={6}>
+      <Card>
+        <CardBody>
+          <p dangerouslySetInnerHTML={{ __html: note.content }} />
+          <Button onClick={() => history.push(`/posts/edit/${note.id}`)}>Edit</Button>
+        </CardBody>
+      </Card>
+    </Col>
+    <Col lg={6}>
+      <Card>
+        <CardBody>
+          <p>Tags: {note.tags ? note.tags.join(', ') : ''}</p>
+          <p>Erstellt: {note.createdAt}</p>
+          <p>
+            Permalink:{' '}
+            <a href={`https://inhji.de/note/${note.hashid}`}>{`https://inhji.de/note/${
+              note.hashid
+            }`}</a>
+          </p>
+        </CardBody>
+      </Card>
+    </Col>
+  </Row>
+))
 
 class PostList extends React.Component {
-  render() {
+  render () {
     const posts = this.props.posts
 
     return (
@@ -31,7 +39,6 @@ class PostList extends React.Component {
           switch (post.__typename) {
             case 'Note':
               return <Note note={post} key={post.id} />
-              break
           }
         })}
       </div>
@@ -39,4 +46,4 @@ class PostList extends React.Component {
   }
 }
 
-export default withRouter(PostList)
+export default PostList

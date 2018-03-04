@@ -13,7 +13,6 @@ class Dashboard extends Component {
     }
 
     const habits = allHabitsQuery.habits
-    console.log(habits.length)
     return (
       <div className="animated fadeIn">
         <Row>{habits.map(habit => <Col key={habit.id}>{<HabitChart habit={habit} />}</Col>)}</Row>

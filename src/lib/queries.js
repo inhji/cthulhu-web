@@ -1,21 +1,14 @@
 import gql from 'graphql-tag'
 
-export const currentUserQuery = gql`
-  query CurrentUserQuery {
-    user {
-      id
-      name
-      email
-    }
-  }
-`
-
 export const allPostsQuery = gql`
   query AllPostsQuery {
     posts {
       ... on Note {
         id
         content
+        createdAt
+        tags
+        hashid
       }
       ... on Article {
         id
@@ -29,6 +22,37 @@ export const allPostsQuery = gql`
     }
   }
 `
+
+export const updateNoteMutation = gql`
+  mutation UpdateNoteMutation(
+    $id: ID!
+    $content: String!
+    $tags: [String]!
+  ) {
+    updateNote(
+      id: $id
+      content: $content
+      tags: $tags
+    ) {
+      id
+      content
+      tags
+      hashid
+    }
+  }
+`
+
+export const deleteNoteMutation = gql`
+  mutation DeleteNoteMutation($id: ID!) {
+    deleteNote(id: $id) {
+      id
+    }
+  }
+`
+
+/*
+  HABITS
+ */
 
 export const allHabitsQuery = gql`
   query AllHabitsQuery {
@@ -145,6 +169,10 @@ export const createHabitLogMutation = gql`
   }
 `
 
+/*
+  USER
+ */
+
 export const createUserMutation = gql`
   mutation CreateUserMutation($email: String!, $password: String!, $name: String!) {
     registerUser(email: $email, password: $password, name: $name) {
@@ -159,6 +187,16 @@ export const signinUserMutation = gql`
     authenticateUser(email: $email, password: $password) {
       token
       id
+    }
+  }
+`
+
+export const currentUserQuery = gql`
+  query CurrentUserQuery {
+    user {
+      id
+      name
+      email
     }
   }
 `

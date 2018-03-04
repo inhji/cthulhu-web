@@ -16,8 +16,6 @@ class Habits extends React.Component {
 
     const habits = allHabitsQuery.habits
 
-    console.log(this.props)
-
     return (
       <div className="animated fadeIn">
         <Switch>
