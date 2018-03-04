@@ -10,6 +10,26 @@ export const currentUserQuery = gql`
   }
 `
 
+export const allPostsQuery = gql`
+  query AllPostsQuery {
+    posts {
+      ... on Note {
+        id
+        content
+      }
+      ... on Article {
+        id
+        title
+        content
+      }
+      ... on Bookmark {
+        id
+        url
+      }
+    }
+  }
+`
+
 export const allHabitsQuery = gql`
   query AllHabitsQuery {
     habits {
