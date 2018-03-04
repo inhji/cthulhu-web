@@ -4,15 +4,16 @@ export default {
       name: 'Dashboard',
       url: '/dashboard',
       icon: 'icon-speedometer'
-      // badge: {
-      //   variant: 'danger',
-      //   text: 'NEW'
-      // }
     },
     {
       name: 'Habits',
       url: '/habits',
-      icon: 'icon-trophy',
+      icon: 'icon-trophy'
+    },
+    {
+      name: 'Posts',
+      url: '/posts',
+      icon: 'icon-list',
       badge: {
         variant: 'success',
         text: 'NEW'
