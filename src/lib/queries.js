@@ -5,6 +5,7 @@ export const allPostsQuery = gql`
     posts {
       ... on Note {
         id
+        type
         content
         createdAt
         tags
@@ -12,12 +13,22 @@ export const allPostsQuery = gql`
       }
       ... on Article {
         id
+        type
         title
         content
+        tags
+        createdAt
+        hashid
       }
       ... on Bookmark {
         id
+        type
         url
+        title
+        content
+        tags
+        hashid
+        createdAt
       }
     }
   }
@@ -45,6 +56,14 @@ export const updateNoteMutation = gql`
 export const deleteNoteMutation = gql`
   mutation DeleteNoteMutation($id: ID!) {
     deleteNote(id: $id) {
+      id
+    }
+  }
+`
+
+export const deleteBookmarkMutation = gql`
+  mutation DeleteBookmarkMutation($id: ID!) {
+    deleteBookmark(id: $id) {
       id
     }
   }

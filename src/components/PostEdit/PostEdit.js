@@ -1,19 +1,14 @@
 import React from 'react'
 import { graphql, compose } from 'react-apollo'
-import {
-  Card,
-  CardBody,
-  Col,
-  Button,
-  ButtonGroup,
-  Form,
-  FormGroup,
-  Label,
-  Input
-} from 'reactstrap'
+import { Card, CardBody, Col, Button, ButtonGroup, Form, FormGroup, Label, Input } from 'reactstrap'
 import { withRouter } from 'react-router-dom'
 import { getUser } from '../../lib/user'
-import { updateNoteMutation, deleteNoteMutation, allPostsQuery } from '../../lib/queries'
+import {
+  updateNoteMutation,
+  deleteNoteMutation,
+  deleteBookmarkMutation,
+  allPostsQuery
+} from '../../lib/queries'
 
 class PostEdit extends React.Component {
   componentDidMount = () => {
@@ -48,8 +43,18 @@ class PostEdit extends React.Component {
   }
 
   handleDelete = async () => {
+    let mutation
+
+    console.log(this.props.post.type)
+
+    if (this.props.post.type === 'Note') {
+      mutation = this.props.deleteNoteMutation
+    } else if (this.props.post.type === 'Bookmark') {
+      mutation = this.props.deleteBookmarkMutation
+    }
+
     try {
-      await this.props.deleteNoteMutation({
+      await mutation({
         variables: {
           id: this.props.post.id
         },
@@ -113,5 +118,6 @@ class PostEdit extends React.Component {
 
 export default compose(
   graphql(updateNoteMutation, { name: 'updateNoteMutation' }),
-  graphql(deleteNoteMutation, { name: 'deleteNoteMutation' })
+  graphql(deleteNoteMutation, { name: 'deleteNoteMutation' }),
+  graphql(deleteBookmarkMutation, { name: 'deleteBookmarkMutation' })
 )(withRouter(PostEdit))
