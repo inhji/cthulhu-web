@@ -61,7 +61,7 @@
     "react-bootstrap-table": "4.2.0",
     "react-chartjs-2": "2.6.4",
     "react-codemirror2": "3.0.7",
-    "react-dates": "15.3.0",
+    "react-dates": "16.4.0",
     "react-dom": "16.2.0",
     "react-google-maps": "9.4.1",
     "react-ladda": "5.0.7",
