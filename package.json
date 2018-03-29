@@ -70,7 +70,7 @@
     "react-select": "1.1.0",
     "react-text-mask-hoc": "0.10.6",
     "react-toastify": "3.0.0",
-    "react-transition-group": "2.2.1",
+    "react-transition-group": "2.3.0",
     "reactstrap": "5.0.0-alpha.4",
     "simple-line-icons": "^2.4.1",
     "spinkit": "1.2.5"
