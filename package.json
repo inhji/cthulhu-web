@@ -54,7 +54,7 @@
     "history": "4.7.2",
     "lodash.countby": "^4.6.0",
     "moment": "^2.21.0",
-    "react": "16.2.0",
+    "react": "16.3.0",
     "react-addons-shallow-compare": "15.6.2",
     "react-apollo": "^2.0.4",
     "react-big-calendar": "0.17.0",
